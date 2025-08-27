@@ -1,0 +1,15 @@
+# ### FINAL docker-compose.yml for Selkies ###
+services:
+  kasm-api:
+    build: .
+    container_name: not-kasm-api
+    ports:
+      - "5000:5000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      # Replace with your host's IP address
+      - HOST_IP=YOUR_PUBLIC_IP
+      # Use the /opt/ directory on the host for profiles
+      - HOST_PROFILES_PATH=/opt/not-kasm_profiles
+    restart: unless-stopped
